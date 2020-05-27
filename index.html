@@ -236,20 +236,26 @@
                     </ul>
                 </div>
                 <div class="col-lg-6 col-md-6 appointment-right pt-60 pb-60">
-                    <form class="form-wrap" action="#">
+                    <script type="text/javascript">
+                        var submitted = false;
+                    </script>
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) showMsg()"></iframe>
+                    <form name="contact-form" class="form-wrap" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSfGH7LsjnTonzVUIyIEbPDnB0DDvTYArhRw5mM2U1cayocwnw/formResponse" method="POST" id="mG61Hd" target="hidden_iframe" onsubmit="submitted=true;">
+
                         <h3 class="pb-20 text-center mb-30">Solicita una cotización</h3>
-                        <input type="text" class="form-control" name="name" placeholder="Nombre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nombre'">
-                        <input type="text" class="form-control" name="product" placeholder="Producto" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Producto'">
-                        <input type="text" class="form-control" name="phone" placeholder="Teléfono " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Teléfono'">
-                        <input type="email" class="form-control" name="email" placeholder="Correo" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Correo'">
-                        <textarea name="messege" class="" rows="5" placeholder="Mensaje" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mensaje'"></textarea>
-                        <button class="primary-btn text-uppercase">Enviar</button>
+                        <input type="text" class="form-control" name="entry.778045646" placeholder="Nombre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nombre'" required>
+                        <input type="text" class="form-control" name="entry.588359444" placeholder="Producto" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Producto'" required>
+                        <input type="text" class="form-control" name="entry.333821367" placeholder="Teléfono " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Teléfono'" required>
+                        <input type="email" class="form-control" name="entry.1740496276" placeholder="Correo" pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,63}$" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Correo'" required>
+                        <textarea name="entry.1298462538" class="" rows="5" placeholder="Mensaje" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mensaje'" required></textarea>
+                        <button class="primary-btn text-uppercase" type="submit" id="btn_submit" name="btn_submit">Enviar</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
     <!-- End appointment Area -->
+
 
 
     <!-- Start contact-page Area -->
@@ -354,6 +360,8 @@
     <!-- End footer Area -->
 
 
+
+
     <script src="js/vendor/jquery-2.2.4.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
@@ -369,6 +377,27 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/mail-script.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
+
+    <script>
+        function showMsg() {
+            console.log("submitted");
+            var frm = document.getElementsByName('contact-form')[0];
+            frm.reset(); // Reset all form data
+
+            Swal.fire({
+                title: 'Hecho!',
+                text: 'Su solicitud ha sido enviada con exito',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            })
+            return false; // Prevent page refresh
+        }
+    </script>
+
 </body>
 
 </html>
